@@ -5,19 +5,14 @@ import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
 import SignatureCanvas from "react-signature-canvas";
 import { motion, AnimatePresence } from "framer-motion";
-
-const modalVariants = {
-  hidden: { opacity: 0, scale: 0.7 },
-  visible: { opacity: 1, scale: 1 },
-  exit: { opacity: 0, scale: 0.7 },
-};
+import { modalVariants } from "@/variants";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   const [signature, setSignature] = useState(null);
   const sigCanvas = useRef(null);
   const modalRef = useRef(null);
-  const [canvasWidth, setCanvasWidth] = useState(600); // <-- State for canvas width
+  const [canvasWidth, setCanvasWidth] = useState(600);
 
   const removeSignature = useCallback(() => {
     if (sigCanvas.current) {
@@ -49,11 +44,7 @@ export default function Home() {
     setModalOpen(false);
   };
 
-  // Modal dışına tıklanınca modalı kapat
   const closeModal = (e) => {
-    if (modalRef.current && modalRef.current.contains(e.target)) {
-      return;
-    }
     setModalOpen(false);
   };
 
@@ -66,21 +57,17 @@ export default function Home() {
 
   useEffect(() => {
     const handleResize = () => {
-      // Check if the window's width is below 768px
       if (window.innerWidth <= 768) {
-        setCanvasWidth(window.innerWidth - 40); // -40 for some padding
+        setCanvasWidth(window.innerWidth - 40);
       } else {
-        setCanvasWidth(600); // If it's not mobile, set back to 600px
+        setCanvasWidth(600);
       }
     };
 
-    // Initial check
     handleResize();
 
-    // Attach the event listener
     window.addEventListener("resize", handleResize);
     return () => {
-      // Clean up the listener
       window.removeEventListener("resize", handleResize);
     };
   }, []);
@@ -126,7 +113,7 @@ export default function Home() {
                   }}
                   canvasProps={{
                     height: 200,
-                    width: 600,
+                    width: canvasWidth,
                     className: "border border-gray-700 ",
                   }}
                 />
@@ -172,7 +159,7 @@ export default function Home() {
             exit="exit"
             className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center absolute bottom-0"
           >
-            <Image src={signature} width={600} height={200} />
+            <Image src={signature} width={canvasWidth} height={200} />
           </motion.div>
         )}
       </AnimatePresence>
