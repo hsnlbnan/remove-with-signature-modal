@@ -45,6 +45,9 @@ export default function Home() {
   };
 
   const closeModal = (e) => {
+    if (modalRef.current && modalRef.current.contains(e.target)) {
+      return;
+    }
     setModalOpen(false);
   };
 
@@ -65,7 +68,6 @@ export default function Home() {
     };
 
     handleResize();
-
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -112,7 +114,7 @@ export default function Home() {
                     setIsDrawing(false);
                   }}
                   canvasProps={{
-                    height: 200,
+                    height: canvasWidth / 2,
                     width: canvasWidth,
                     className: "border border-gray-700 ",
                   }}
@@ -159,7 +161,12 @@ export default function Home() {
             exit="exit"
             className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center absolute bottom-0"
           >
-            <Image src={signature} width={canvasWidth} height={200} />
+            <Image
+              src={signature}
+              width={canvasWidth}
+              height={200}
+              alt="Signature"
+            />
           </motion.div>
         )}
       </AnimatePresence>
