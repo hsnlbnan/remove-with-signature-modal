@@ -1,37 +1,50 @@
+
+# React İmza Komponenti
 ![Screenshot](screenshots/ss.png)
 
+Bu repo, kullanıcının imzasını çizmesi için bir React komponenti içermektedir. İmza, ekranın boyutuna göre ayarlanabilen bir tuval üzerinde çizilir. Ayrıca imzanın silinip silinmemesi için bir onay modalı da içermektedir.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Özellikler:
+- İmzanın çizilmesi için tuval.
+- İmza boyutunun ekranın genişliğine göre ayarlanması.
+- İmzanın silinmesi için modal onay penceresi.
+- İmzanın silinmesi için çöp kutusu ikonu.
+- İmza verilerinin PNG formatında dönüştürülmesi.
 
-## Getting Started
+## Kurulum ve Kullanım:
+1. Bu repoyu klonlayın veya indirin.
+   ```
+   git clone https://github.com/hsnlbnan/remove-with-signature-modal
+   ```
 
-First, run the development server:
+2. Bağımlılıkları yükleyin:
+   ```
+   npm install
+   ```
+   veya
+   ```
+   yarn install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+3. Uygulamayı çalıştırın:
+   ```
+   npm start
+   ```
+   veya
+   ```
+   yarn start
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Bağımlılıklar:
+Bu komponentin çalışması için bazı harici kütüphanelere ihtiyacı vardır:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- `next/image`: Resim optimizasyonu ve görüntüleme için kullanılır.
+- `react-signature-canvas`: İmza tuvali için kullanılır.
+- `framer-motion`: Animasyonlar ve geçişler için kullanılır.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Katkıda Bulunma:
+Bu projeye katkıda bulunmak isterseniz, lütfen pull request gönderin. Öneri, soru veya geri bildirimleriniz için issue oluşturabilirsiniz.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Bu projeyi kullanırken veya geliştirirken karşılaştığınız sorunlarda, bu reponun issue bölümünden yardım alabilirsiniz. İyi kodlamalar!
